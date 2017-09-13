@@ -17,7 +17,9 @@ app.get("/api", controllers.api.index);
 app.get("/users", controllers.users.index);
 app.post("/users", controllers.users.create);
 app.get("/users/:userId", controllers.users.show);
-app.delete("/users/:userId", controllers.users.destroy)
+app.delete("/users/:userId", controllers.users.destroy);
+app.put("/users/:userId", controllers.users.update);
+
 
 
 app.get("/texts", controllers.texts.index);

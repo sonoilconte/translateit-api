@@ -42,7 +42,20 @@ function destroy(req, res){
 }
 
 function update(req, res){
-
+  db.User.findOne({_id: req.params.userId}, function(err, user){
+    if (err){
+      console.log("ERROR FINDING USER TO UPDATE", err);
+    }
+    user.username = req.body.username;
+    user.email = req.body.email;
+    user.password = req.body.password;
+    user.save(function(err, user){
+      if(err){
+        console.log("ERROR SAVING UPDATED USER", err)
+      }
+      res.json(user);
+    });
+  });
 }
 
 module.exports = {
