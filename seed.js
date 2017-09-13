@@ -64,6 +64,47 @@ textList.push({
         Be all my sins remembered.`
 });
 
+textList.push({
+  title: "Les roses d’Ispahan",
+  lang: "French",
+  author: "Charles Marie René Leconte de Lisle",
+  origLang: true,
+  textRef_id: null,
+  body: `Les roses d’Ispahan dans leur gaine de mousse,
+        Le jasmins de Mossoul, les fleurs de l’oranger,
+        Ont un parfum moins frais, ont une odeur moins douce,
+        Ô blanche Leïlah! que ton souffle léger.
+        Ta lèvre est de corail et ton rire léger
+        Sonne mieux que l’eau vive et d’une voix plus douce.
+        Mieux que le vent joyeux qui berce l’oranger,
+        Mieux que l’oiseau qui chante au bord d’un nid de mousse.
+        Ô Leïlah! depuis que de leur vol léger
+        Tous les baisers ont fui de ta lèvre si douce
+        Il n’est plus de parfum dans le pâle oranger,
+        Ni de céleste arome aux roses dans leur mousse.
+        Oh! que ton jeune amour ce papillon léger
+        Revienne vers mon coeur d’une aile prompte et douce.
+        Et qu’il parfume encor la fleur de l’oranger,
+        Les roses d’Ispahan dans leur gaine de mousse.`
+});
+
+textList.push({
+  title: "Du bist wie eine Blume",
+  lang: "German",
+  author: "Heinrich Heine",
+  origLang: true,
+  textRef_id: null,
+  body: `Du bist wie eine Blume,
+        So hold und schön und rein;
+        Ich schau’ dich an, und Wehmuth
+        Schleicht mir in’s Herz hinein.
+
+        Mir ist, als ob ich die Hände
+        Auf’s Haupt dir legen sollt’,
+        Betend, daß Gott dich erhalte
+        So rein und schön und hold.`
+});
+
 // seed users- remove users, remove texts, create users, create texts that go with each user
 
 db.User.remove({}, function(err, users){
