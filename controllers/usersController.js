@@ -33,7 +33,12 @@ function show(req, res){
 }
 
 function destroy(req, res){
-
+  db.User.findOneAndRemove({_id: req.params.userId}, function(err, user){
+    if (err){
+      console.log("ERROR FINDING AND REMOVING USER", err);
+    }
+    res.json(user);
+  });
 }
 
 function update(req, res){
