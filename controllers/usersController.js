@@ -22,7 +22,13 @@ function create(req, res){
 }
 
 function show(req, res){
-  res.json("hello from show a user")
+  db.User.findOne({_id: req.params.userId}, function(err, user){
+    if (err){
+      console.log("ERROR FINDING USER", err);
+    }
+    console.log("FINDING USER ", user);
+    res.json(user);
+  });
 
 }
 

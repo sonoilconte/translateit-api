@@ -16,8 +16,8 @@ app.get("/api", controllers.api.index);
 
 app.get("/users", controllers.users.index);
 app.post("/users", controllers.users.create);
+app.get("/users/:userId", controllers.users.show)
 
-app.get("/user", controllers.users.show)
 
 app.get("/texts", controllers.texts.index);
 
