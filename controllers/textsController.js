@@ -1,4 +1,4 @@
-// let db = require("../models")
+let db = require("../models")
 
 function index(req, res){
   // db.User.find({}, function(err, users){

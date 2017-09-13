@@ -6,7 +6,7 @@ let TextSchema = new Schema({
   lang: String,
   author: String,
   body: String,
-  origLang?: Boolean,
+  origLang: Boolean,
   textRef_id: String,
   _user: {type: Schema.Types.ObjectId, ref: "User"}
 });
