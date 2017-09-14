@@ -33,7 +33,11 @@ function show(req, res){
 }
 
 function destroy(req, res){
-
+  db.Text.findOneAndRemove({ _id: req.params.textId }, function(err, text){
+    if (err){ console.log("ERROR FINDING AND REMOVING TEXT", err); }
+    console.log("DELETING ONE TEXT", text);
+    res.json(text);
+  });
 }
 
 function update(req, res){

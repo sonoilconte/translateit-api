@@ -31,7 +31,7 @@ app.post("/texts", controllers.texts.create);
 // SHOW A TEXT FOR A USER
 app.get("/texts/:textId", controllers.texts.show);
 // DELETE A TEXT FOR A USER
-app.delete("/users/:userId/texts/:textId", controllers.texts.destroy);
+app.delete("/texts/:textId", controllers.texts.destroy);
 // UPDATE A TEXT FOR A USER
 app.put("users/:userId/texts/:textId", controllers.texts.update);
 
