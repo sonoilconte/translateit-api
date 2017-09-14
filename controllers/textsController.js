@@ -1,14 +1,19 @@
 let db = require("../models")
 
 function index(req, res){
-  // db.User.find({}, function(err, users){
-  //   if (err){
-  //     console.log("ERROR", err);
-  //   }
-  //   console.log("GETTING ALL USERS")
-  //   res.json(users);
-  // });
-  res.json("hello from textsController")
+  db.Text.find({}, function(err, texts){
+    if (err){ console.log("ERROR FINDING ALL TEXTS", err); }
+    console.log("GETTING ALL TEXTS")
+    res.json(texts);
+  });
+}
+
+function userIndex(req, res){
+  db.Text.find({ _user: req.params.userId }, function(err, texts){
+    if (err){ console.log("ERROR FINDING ALL TEXTS BY USER", err); }
+    console.log("GETTING ALL TEXTS BY USER");
+    res.json(texts);
+  });
 }
 
 function create(req, res){
@@ -29,6 +34,7 @@ function update(req, res){
 
 module.exports = {
   index: index,
+  userIndex: userIndex,
   create: create,
   show: show,
   destroy: destroy,
