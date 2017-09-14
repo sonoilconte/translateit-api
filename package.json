@@ -1,6 +1,10 @@
 {
   "name": "translateit-api",
   "version": "1.0.0",
+  "engines": {
+    "node": "8.4.0",
+    "npm": "5.4.1"
+  },
   "description": "backend for translateit",
   "main": "server.js",
   "scripts": {
