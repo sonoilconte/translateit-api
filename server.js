@@ -29,7 +29,7 @@ app.get("/users/:userId/texts", controllers.texts.userIndex);
 // CREATE TEXT FOR A USER
 app.post("/texts", controllers.texts.create);
 // SHOW A TEXT FOR A USER
-app.get("/users/:userId/texts/:textId", controllers.texts.show);
+app.get("/texts/:textId", controllers.texts.show);
 // DELETE A TEXT FOR A USER
 app.delete("/users/:userId/texts/:textId", controllers.texts.destroy);
 // UPDATE A TEXT FOR A USER

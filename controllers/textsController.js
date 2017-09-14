@@ -18,13 +18,18 @@ function userIndex(req, res){
 
 function create(req, res){
   db.Text.create(req.body, function(err, text){
-    if (err){ console.log("ERROR CREATING NEW TEXT FOR USER", err); }
+    if (err){ console.log("ERROR CREATING NEW TEXT", err); }
+    console.log("CREATING NEW TEXT", text);
     res.json(text);
   });
 }
 
 function show(req, res){
-
+  db.Text.findOne({ _id: req.params.textId }, function(err, text){
+    if (err){ console.log("ERROR FINDING TEXT", err); }
+    console.log("SHOWING ONE TEXT", text);
+    res.json(text);
+  });
 }
 
 function destroy(req, res){
