@@ -41,7 +41,22 @@ function destroy(req, res){
 }
 
 function update(req, res){
-
+  db.Text.findOne({ _id: req.params.textId }, function(err, text){
+    if (err){ console.log("ERROR FINDING TEXT TO UPDATE", err); }
+    console.log("UPDATING TEXT", text);
+    text.title = req.body.title;
+    text.author = req.body.author;
+    text.lang = req.body.lang;
+    text.body = req.body.body;
+    text.origLang = req.body.origLang;
+    text.textRef_id = req.body.textRef_id;
+    text._user = req.body._user;
+    text.save(function(err, text){
+      if (err){ console.log("ERROR SAVING TEXT TO UPDATE", err); }
+      console.log("SAVING UPDATED TEXT", text);
+      res.json(text);
+    });
+  });
 }
 
 module.exports = {

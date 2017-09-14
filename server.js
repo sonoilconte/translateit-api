@@ -33,8 +33,7 @@ app.get("/texts/:textId", controllers.texts.show);
 // DELETE A TEXT FOR A USER
 app.delete("/texts/:textId", controllers.texts.destroy);
 // UPDATE A TEXT FOR A USER
-app.put("users/:userId/texts/:textId", controllers.texts.update);
-
+app.put("/texts/:textId", controllers.texts.update);
 
 
 app.listen(process.env.PORT || 3000, function(){
