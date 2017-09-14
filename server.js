@@ -24,7 +24,17 @@ app.put("/users/:userId", controllers.users.update);
 // TEXT ROUTES
 // INDEX OF ALL TEXTS
 app.get("/texts", controllers.texts.index);
-app.get("/users/:userId/texts", controllers.texts.userIndex)
+// GET TEXTS BY USER
+app.get("/users/:userId/texts", controllers.texts.userIndex);
+// CREATE TEXT FOR A USER
+app.post("/texts", controllers.texts.create);
+// SHOW A TEXT FOR A USER
+app.get("/users/:userId/texts/:textId", controllers.texts.show);
+// DELETE A TEXT FOR A USER
+app.delete("/users/:userId/texts/:textId", controllers.texts.destroy);
+// UPDATE A TEXT FOR A USER
+app.put("users/:userId/texts/:textId", controllers.texts.update);
+
 
 
 app.listen(process.env.PORT || 3000, function(){

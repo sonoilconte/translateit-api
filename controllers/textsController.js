@@ -17,7 +17,10 @@ function userIndex(req, res){
 }
 
 function create(req, res){
-
+  db.Text.create(req.body, function(err, text){
+    if (err){ console.log("ERROR CREATING NEW TEXT FOR USER", err); }
+    res.json(text);
+  });
 }
 
 function show(req, res){
