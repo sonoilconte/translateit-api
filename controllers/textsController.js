@@ -59,11 +59,20 @@ function update(req, res){
   });
 }
 
+function textGroup(req, res){
+  db.Text.find({ textRef_id: req.params.textRefId }, function(err, texts){
+    if (err){ console.log("ERROR FINDING ASSOCIATED TRANSLATION TEXTS", err); }
+    console.log("FINDING ASSOCIATED TRANSLATION TEXTS");
+    res.json(texts);
+  });
+}
+
 module.exports = {
   index: index,
   userIndex: userIndex,
   create: create,
   show: show,
   destroy: destroy,
-  update: update
+  update: update,
+  textGroup: textGroup
 };

@@ -45,6 +45,8 @@ app.get("/texts/:textId", controllers.texts.show);
 app.delete("/texts/:textId", controllers.texts.destroy);
 // UPDATE A TEXT FOR A USER
 app.put("/texts/:textId", controllers.texts.update);
+// GET ASSOCIATED TRANSLATION TEXTS
+app.get("/textgroup/:textRefId", controllers.texts.textGroup);
 
 
 app.listen(process.env.PORT || 3001, function(){
