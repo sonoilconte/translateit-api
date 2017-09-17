@@ -54,19 +54,26 @@ app.delete("/users/:userId", controllers.users.destroy);
 app.put("/users/:userId", controllers.users.update);
 
 // USER AUTH ROUTES
+// Sign Up
 app.post("/signup", function(req, res){
+  console.log(`Signing up ${req.body.username} with pw ${req.body.password}`)
   User.register(new User({ username: req.body.username }), req.body.password,
     function (err, newUser){
       if (err){
         console.log(err);
       }
-      passport.authenticate('local')(req, res, function(){
+      passport.authenticate("local")(req, res, function(){
         res.send(newUser);
       });
     }
   );
 });
 
+// Log in
+app.post("/login", passport.authenticate("local"), function(req, res){
+  console.log("Logging in user ", req.user);
+  res.send("User is logged in.");
+});
 
 // TEXT ROUTES
 // INDEX OF ALL TEXTS
