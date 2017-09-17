@@ -75,6 +75,14 @@ app.post("/login", passport.authenticate("local"), function(req, res){
   res.send("User is logged in.");
 });
 
+// Log out
+app.get("/logout", function(req, res){
+  console.log("Logging out ", JSON.stringify(req.user));
+  req.logout();
+  console.log("Logged out ", JSON.stringify(req.user));
+});
+
+
 // TEXT ROUTES
 // INDEX OF ALL TEXTS
 app.get("/texts", controllers.texts.index);
