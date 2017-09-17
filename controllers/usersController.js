@@ -47,7 +47,6 @@ function update(req, res){
       console.log("ERROR FINDING USER TO UPDATE", err);
     }
     user.username = req.body.username;
-    user.email = req.body.email;
     user.password = req.body.password;
     user.save(function(err, user){
       if(err){
