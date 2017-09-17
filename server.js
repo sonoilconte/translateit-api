@@ -72,7 +72,7 @@ app.post("/signup", function(req, res){
 // Log in
 app.post("/login", passport.authenticate("local"), function(req, res){
   console.log("Logging in user ", req.user);
-  res.send("User is logged in.");
+  res.send(req.user);
 });
 
 // Log out
@@ -80,6 +80,7 @@ app.get("/logout", function(req, res){
   console.log("Logging out ", JSON.stringify(req.user));
   req.logout();
   console.log("Logged out ", JSON.stringify(req.user));
+  res.send("User logged out.");
 });
 
 
