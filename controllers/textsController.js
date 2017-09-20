@@ -4,6 +4,7 @@ function index(req, res){
   db.Text.find({}, function(err, texts){
     if (err){ console.log("ERROR FINDING ALL TEXTS", err); }
     console.log("GETTING ALL TEXTS")
+    // sending an array, instead send res.json({texts: texts});
     res.json(texts);
   });
 }

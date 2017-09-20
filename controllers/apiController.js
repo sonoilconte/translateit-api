@@ -5,7 +5,8 @@ function index(req, res){
     base_url: "localhost:3001",
     endpoints: [
       {
-        method: "GET", path: "/api", description: "Describes available endpoints"
+        method: "GET", path: "/api", description: "Describes available endpoints",
+        // TODO: FILL OUT
       }
     ]
   });
