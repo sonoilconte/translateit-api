@@ -8,8 +8,7 @@ let LocalStrategy = require ('passport-local').Strategy;
 
 // require DB models
 let db = require('./models');
-let Text = db.Text;
-let User = db.User;
+
 
 // access controllers
 let controllers = require("./controllers");
@@ -43,8 +42,24 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
+
+// TODO: exrtract routes to a routes.js file and require and use that file in server.js
+
 // API description route
 app.get("/api", controllers.api.index);
+
+
+// let router = Express.router(); // something like this.
+
+// suggested implementation:
+// router.route('/users')
+//   .get(controllers.users.index)
+//   .post(controllers.users.create)
+//
+// router.route('/users/:userId')
+//   .get( controllers.users.show)
+//   .delete( controllers.users.destroy)
+//   .put( controllers.users.update)
 
 // USER ROUTES
 app.get("/users", controllers.users.index);
@@ -76,6 +91,7 @@ app.post("/login", passport.authenticate("local"), function(req, res){
 });
 
 // Log out
+                    // use an arrow funciton
 app.get("/logout", function(req, res){
   console.log("Logging out ", JSON.stringify(req.user));
   req.logout();
@@ -104,14 +120,3 @@ app.get("/textgroup/:textRefId", controllers.texts.textGroup);
 app.listen(process.env.PORT || 3001, function(){
   console.log("Express server is up and running!");
 });
-
-
-// front end server
-// use "public" dir for static files
-// app.use(express.static("public"));
-
-// serve index.html from views
-// app.get('/', function(req, res){
-//   res.sendFile("views/index.html", {root: __dirname});
-//   console.log(__dirname);
-// });

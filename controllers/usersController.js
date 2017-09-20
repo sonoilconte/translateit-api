@@ -1,5 +1,7 @@
 let db = require("../models")
 
+// TODO: revisit and integrate w/ passport as necessary.
+
 function index(req, res){
   db.User.find({}, function(err, users){
     if (err){
