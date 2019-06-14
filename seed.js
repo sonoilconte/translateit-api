@@ -107,13 +107,12 @@ textList.push({
 
 // seed users- remove users, remove texts, create users, create texts that go with each user
 
-db.User.remove({}, function(err, users){
-  db.Text.remove({}, function(err, texts){
-    db.User.create(userList, function(err, users){
-      if (err){ console.log("ERROR CREATING USERS ", err);}
-      console.log("CREATED", users.length, "USERS: ", users);
-      users.forEach(function(user){
-        textList.forEach(function(text){
+db.User.remove({}, function(err, users) {
+  db.Text.remove({}, function(err, texts) {
+    userList.forEach(user => {
+      db.User.register(new db.User({ username: user.username }), user.password, (err, newUser) => {
+        if (err) { console.log(err) }
+        textList.forEach(text => {
           let newText = {
             title: text.title,
             lang: text.lang,
@@ -121,11 +120,11 @@ db.User.remove({}, function(err, users){
             body: text.body,
             origLang: text.origLang,
             textRef_id: text.textRef_id,
-            _user: user._id
-          }
-          db.Text.create(newText, function(err, text){
-            if (err){ console.log("ERROR CREATING TEXT ", err);}
-            console.log("CREATED TEXT", text.title, "FOR USER");
+            _user: newUser._id
+          };
+          db.Text.create(newText, (err, text) => {
+            if (err) { console.log('error creating text', err) }
+            console.log('created text', text.title, ' for user ', newUser.username);
           });
         });
       });
